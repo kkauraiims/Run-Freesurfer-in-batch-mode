@@ -7,7 +7,10 @@ To use this script you will need:
 (i) FreeSurfer installed on your system, with a valid license. The license is available for free. If FreeSurfer is not yet installed, please see the official installation guide:  
    https://surfer.nmr.mgh.harvard.edu/fswiki/DownloadAndInstall
    
-(ii) Structural MRI scans of interest in `.nii.gz` format (preferable), stored in a single subject directory on your system. If your MRI data are stored as DICOM files, please use the alternate script provided for DICOM inputs.
+(ii) Structural MRI scans of interest in `.nii.gz` format (preferable), stored in a single subjects directory on your system. If your MRI data are stored as DICOM files, please use the alternate script provided for DICOM inputs (run_freesurfer_batch_dicom.sh). 
+
+(iii) The subject ID provided when running the script must match the name of the corresponding input DICOM folder or .nii.gz file. For example: data for a subject with ID 'S001' should be stored as 'S001.nii.gz' or in a DICOM folder with the name 'S001'.  
+
 
 ## Running the code 
 Batch processing in FreeSurfer is well suited to HPC (High Performance Computing) systems, as processing a single subject with `recon-all` can take 4-7 hours.
@@ -31,7 +34,7 @@ export SUBJECTS_DIR=/path/to/your/subject_directory
 cd $SUBJECTS_DIR
 
 # Run recon-all for each subject in a loop
-# add the subject names after the script path separated by a space bar
+# add the subject IDs after the script path separated by a space bar
 # In this example the script will process S001 to S005 
 bash /path/to/run_freesurfer_batch.sh S001 S002 S003 S004 S005
 ```
